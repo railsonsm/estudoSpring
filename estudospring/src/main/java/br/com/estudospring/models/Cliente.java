@@ -36,6 +36,14 @@ public class Cliente {
 
 	public Cliente(long idClienteFernando, String string, String string2) {
 	}
+	
+	
+
+	public Cliente() {
+		super();
+	}
+
+
 
 	public Long getId() {
 		return id;
