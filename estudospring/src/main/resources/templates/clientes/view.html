@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title th:text="${cliente.nome}"></title>
+</head>
+<body>
+	<h1 layout:fragment="header">Cliente</h1>
+	<div layout:fragment="content">
+		<div class="alert alert-success" role="alert" th:if="${globalMensagem}"
+			th:text="${globalMensagem}">Cliente cadastrado com sucesso</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Endereco</th>
+					<th scope="col">+</th>
+					<th scope="col">-</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					
+					<td id="id" th:text="${cliente.id}">123</td>
+					<td id="nome" th:text="${cliente.nome}">Nome</td>
+					<td id="endereco" th:text="${cliente.endereco}">Endereco</td>
+					<td><a href="form.html" th:href="@{'/clientes/alterar/'+${cliente.id}}">Alterar</a></td>
+					<td><a href="form.html" th:href="@{'/clientes/remover/'+${cliente.id}}">Alterar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

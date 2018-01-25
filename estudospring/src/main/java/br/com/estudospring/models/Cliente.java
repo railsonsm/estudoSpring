@@ -40,7 +40,6 @@ public class Cliente {
 	
 
 	public Cliente() {
-		super();
 	}
 
 
