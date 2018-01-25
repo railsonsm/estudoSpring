@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.estudospring.models.Cliente;
+import br.com.estudospring.models.Item;
 import br.com.estudospring.repository.ClienteRepository;
 
 
@@ -75,6 +76,8 @@ public class ClienteController {
 		List<Cliente> clientes = repository.findAll();
 		return new ModelAndView("clientes/lista", "clientes", clientes);
 	}
+	
+	
 	
 	
 }

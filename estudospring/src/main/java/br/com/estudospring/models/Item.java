@@ -12,9 +12,11 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 public class Item {
 	public Item(long idItem1, String string, double d) {
-		// TODO Auto-generated constructor stub
 	}
 
+	public Item() {
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;

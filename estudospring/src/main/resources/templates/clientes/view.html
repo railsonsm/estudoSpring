@@ -29,7 +29,7 @@
 					<td id="nome" th:text="${cliente.nome}">Nome</td>
 					<td id="endereco" th:text="${cliente.endereco}">Endereco</td>
 					<td><a href="form.html" th:href="@{'/clientes/alterar/'+${cliente.id}}">Alterar</a></td>
-					<td><a href="form.html" th:href="@{'/clientes/remover/'+${cliente.id}}">Alterar</a></td>
+					<td><a href="#" th:href="@{'/clientes/remover/'+${cliente.id}}">Alterar</a></td>
 				</tr>
 			</tbody>
 		</table>
