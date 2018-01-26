@@ -30,7 +30,7 @@ public class Cliente {
 	@Length(min=2, max=300, message="O tamanho do endereço deve ser entre {min} e {max} caracteres")
 	private String endereco;
 	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	@Cascade(CascadeType.ALL)
 	private List<Pedido> pedidos;
 

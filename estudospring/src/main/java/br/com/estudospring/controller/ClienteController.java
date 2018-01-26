@@ -46,11 +46,11 @@ public class ClienteController {
 			return new ModelAndView(CLIENTE_URI + "form", "formErrors", result.getAllErrors());
 		}
 		repository.save(cliente);	
-		if(cliente.getId() != null) {
+		if(cliente.getId() == null) {
 			redirect.addFlashAttribute("globalMensagem", "Cliente alterado com sucesso");
 		}
 		else {
-			redirect.addFlashAttribute("globalMensagem", "Cliente gravado com sucesso");
+			redirect.addFlashAttribute("globalMensagem", "Cliente alterado com sucesso");
 		}	
 		//return new ModelAndView("redirect:/" + CLIENTE_URI + "novo");
 		return new ModelAndView("redirect:/" + CLIENTE_URI + "{cliente.id}", "cliente.id" , cliente.getId());

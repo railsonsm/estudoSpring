@@ -14,7 +14,7 @@
 <table class="table">
 			<thead>
 				<tr>
-					<th scope="col">ID</th>
+					<th scope="col">ID</</th>
 					<th scope="col">Nome</th>
 					<th scope="col">Endereco</th>
 					<th scope="col">+</th>
@@ -23,14 +23,16 @@
 			</thead>
 			<tbody>
 				<tr th:each="cliente : ${clientes}">					
-					<td id="id" th:text="${cliente.id}">123</td>
+					<td id="id" ><a href="" th:href="@{'/clientes/'+${cliente.id}}"><span th:text="${cliente.id}"></span></a></td>
 					<td id="nome" th:text="${cliente.nome}">Nome</td>
 					<td id="endereco" th:text="${cliente.endereco}">Endereco</td>
 					<td><a href="form.html" th:href="@{'/clientes/alterar/'+${cliente.id}}">Alterar</a></td>
-					<td><a href="form.html" th:href="@{'/clientes/remover/'+${cliente.id}}">Alterar</a></td>
+					<td><a href="form.html" th:href="@{'/clientes/remover/'+${cliente.id}}">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<a href="#" th:href="@{/clientes/novo}" class="btn btn-primary" role="button" aria-pressed="true">Adicionar</a><br />
+		<a th:href="@{/}" href="/">Voltar</a>
 	</div>
 </body>
 </html>

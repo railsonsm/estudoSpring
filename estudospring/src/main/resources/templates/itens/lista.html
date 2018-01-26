@@ -9,6 +9,7 @@
 <body>
 	<h1 layout:fragment="header">Item</h1>
 	<div layout:fragment="content">
+	<div class="alert alert-success" role="alert" th:if="${globalMensagem}" th:text="${globalMensagem}"></div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -24,14 +25,15 @@
 					<td colspan="5">Sem Itens</td>
 				</tr>
 				<tr th:each="item : ${itens}">
-					<td id="id" th:text="${item.id}">ID</td>
+					<td id="id"><a href="" th:href="@{/itens/{p}(p=${item.id})}"><span th:text="${item.id}"></span></a></td>
 					<td id="nome" th:text="${item.nome}">Nome</td>
 					<td id="preco" th:text="${item.preco}">Preco</td>
 					<td><a href="item.form" th:href="@{'/itens/alterar/'+${item.id}}">Alterar</a></td>
-					<td><a href="#" th:href="@{'/itens/remover/'+${item.id}}">Alterar</a></td>
+					<td><a href="#" th:href="@{'/itens/remover/'+${item.id}}">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<a th:href="@{/itens/novo}" class="btn btn-primary" role="button" aria-pressed="true"> Adicionar</a>
 	</div>
 </body>
 </html>

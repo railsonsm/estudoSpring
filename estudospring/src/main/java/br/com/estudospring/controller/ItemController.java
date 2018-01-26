@@ -21,7 +21,7 @@ import br.com.estudospring.repository.ItemRepository;
 
 @Controller
 @RequestMapping("/itens")
-public class ItensController {
+public class ItemController {
 	@Autowired
 	private ItemRepository repository;
 	
@@ -37,7 +37,9 @@ public class ItensController {
 		if(result.hasErrors()) {
 			return new ModelAndView(ITEM_URI + "form", "formErrors", result.getAllErrors());
 		}
+		
 		repository.save(item);
+		request.addFlashAttribute("globalMensagem", "Item adicionado com sucessso");
 		return new ModelAndView("redirect:/itens/{item.id}", "item.id", item.getId());
 	}
 	
@@ -54,7 +56,10 @@ public class ItensController {
 	@GetMapping("remover/{id}")
 	public ModelAndView remover(@PathVariable("id") Long id) {
 		repository.delete(id);
-		return new ModelAndView("redirect:/itens");
+		List<Item> itens = repository.findAll();
+		ModelAndView modelAndView = new ModelAndView("itens/lista", "itens", itens);
+		modelAndView.addObject("globalMensagem", "Item excluido com sucesso");
+		return modelAndView;
 	}
 	
 	@GetMapping

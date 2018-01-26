@@ -9,6 +9,7 @@
 <body>
 	<h1 layout:fragment="header">Item</h1>
 	<div layout:fragment="content">
+	<div class="alert alert-success" role="alert" th:if="${globalMensagem}" th:text="${globalMensagem}">Adicionado</div>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -25,10 +26,13 @@
 					<td id="nome" th:text="${item.nome}">Nome</td>
 					<td id="preco" th:text="${item.preco}">Preco</td>
 					<td><a href="item.form" th:href="@{'/itens/alterar/'+${item.id}}">Alterar</a></td>
-					<td><a href="#" th:href="@{'/itens/remover/'+${item.id}}">Alterar</a></td>
+					<td><a href="#" th:href="@{'/itens/remover/'+${item.id}}">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<a href="#" th:href="@{/itens/novo}" class="btn btn-primary" role="button" aria-pressed="true">Adicionar</a>
+		<a href="#" th:href="@{/itens}" class="btn btn-primary" role="button" aria-pressed="true">Lista</a>		
+		<br /> <a th:href="@{/}" href="/">Voltar</a>
 	</div>
 </body>
 </html>

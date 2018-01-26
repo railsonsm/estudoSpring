@@ -10,6 +10,7 @@
 	<h1 layout:fragment="header">Cadastro de Itens</h1>
 	<div layout:fragment="content">
 		<form action="#" th:action="@{/itens/(form)}" method="post" th:object="${item}">
+			<input type="hidden" id="id" th:field="*{id}">
 			<div class="form-group">
 				<label for="nome">Nome</label> 
 				<input type="text" class="form-control" id="nome" th:field="*{nome}">
@@ -25,7 +26,9 @@
 					out</label>
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
+			
 		</form>
+		<a th:href="@{/}" href="/">Voltar</a>
 	</div>
 </body>
 </html>

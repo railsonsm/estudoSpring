@@ -9,8 +9,9 @@
 <body>
 	<h1 layout:fragment="header">Cliente</h1>
 	<div layout:fragment="content">
-		<div class="alert alert-success" role="alert" th:if="${globalMensagem}"
-			th:text="${globalMensagem}">Cliente cadastrado com sucesso</div>
+		<div class="alert alert-success" role="alert"
+			th:if="${globalMensagem}" th:text="${globalMensagem}">Cliente
+			cadastrado com sucesso</div>
 
 		<table class="table">
 			<thead>
@@ -24,15 +25,20 @@
 			</thead>
 			<tbody>
 				<tr>
-					
+
 					<td id="id" th:text="${cliente.id}">123</td>
 					<td id="nome" th:text="${cliente.nome}">Nome</td>
 					<td id="endereco" th:text="${cliente.endereco}">Endereco</td>
-					<td><a href="form.html" th:href="@{'/clientes/alterar/'+${cliente.id}}">Alterar</a></td>
-					<td><a href="#" th:href="@{'/clientes/remover/'+${cliente.id}}">Alterar</a></td>
+					<td><a href="form.html"
+						th:href="@{'/clientes/alterar/'+${cliente.id}}">Alterar</a></td>
+					<td><a href="#"
+						th:href="@{'/clientes/remover/'+${cliente.id}}">Excluir</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<a href="#" th:href="@{/clientes/novo}" class="btn btn-primary" role="button" aria-pressed="true">Adicionar</a>
+		<a href="#" th:href="@{/clientes}" class="btn btn-primary" role="button" aria-pressed="true">Lista</a>
+		<br /> <a th:href="@{/}" href="/">Voltar</a>
 	</div>
 </body>
 </html>
