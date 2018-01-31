@@ -1,0 +1,73 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout"
+	ng-app="delivery">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Green Dog Delivery</title>
+<!--  Angular -->
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script type="text/javascript" th:src="@{/js/checklist-model.js}"></script>
+<script type="text/javascript" th:src="@{/js/delivery.js}"></script>
+<style>
+.opcao {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: 300;
+	margin: 10px
+}
+</style>
+</head>
+<body>
+	<h1 layout:fragment="header">Delivery - Novo Pedido</h1>
+	<div layout:fragment="content">
+			<div ng-controller="pedidoController">
+
+				<form class="form-horizontal">
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-12" for="checkboxes"> <img alt=""
+								src="../img/hotdog.svg" style="width: 50px; margin: -12px 0px;" />
+								Cardápio
+							</label>
+						</div>
+						<div class="form-group">
+							<div class="col-md-12">
+								<div class="checkbox checkbox-primary" ng-repeat="i in itens">
+									<label for="checkboxes-0" class="opcao"> <input
+										name="checkboxes" class=" " checklist-model="pedidoItens"
+										checklist-value="i" ng-click="isItemSelecionado(i)"
+										type="checkbox"> &nbsp;{{i.nome}} [R${{i.preco}}]
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-12" for="btnSubmit">Subtotal:
+								R${{subTotal}} </label>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-12">
+								<button id="btnSubmit" name="btnSubmit"
+									ng-click="fazerPedido(pedidoItens)" class="btn btn-primary">Fazer
+									o pedido</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+				<div class="alert alert-success" ng-show="idPedido!=null">
+					<strong>Pedido {{idPedido}}</strong> {{mensagem}}
+				</div>
+				<div class="alert alert-warning" ng-show="idPedido!=null">
+					Valor do pedido: <strong>{{valorTotal}}</strong> reais.
+				</div>
+				<div class="alert alert-warning" ng-show="idPedido!=null">
+					Chamada do serviço: <strong>{{urlPedido}}</strong>
+				</div>
+				<fieldset>{{message}}</fieldset>
+			</div>
+		</div>
+</body>
+</html>

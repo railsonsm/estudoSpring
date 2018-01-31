@@ -61,6 +61,9 @@ public class Pedido {
 	public Pedido(long idPedido1, Cliente fernando, List<Item> listaPedidoFernando1, Double preco) {
 	}
 
+	public Pedido() {
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.estudospring.models.Cliente;
-import br.com.estudospring.models.Item;
 import br.com.estudospring.repository.ClienteRepository;
 
 
@@ -30,7 +30,7 @@ public class ClienteController {
 		this.repository = clienteRepository;
 	}
 	
-	@RequestMapping("/novo")
+	@RequestMapping
 	public String createForm(@ModelAttribute Cliente cliente) {
 		return CLIENTE_URI + "form";
 	}
@@ -39,6 +39,7 @@ public class ClienteController {
 	public ModelAndView view(@PathVariable("id") Cliente cliente) {
 		return new ModelAndView("clientes/view", "cliente", cliente);
 	}
+
 	
 	@PostMapping(params="form")
 	public ModelAndView adicionar(@Valid Cliente cliente, BindingResult result, RedirectAttributes redirect ) {
@@ -56,7 +57,7 @@ public class ClienteController {
 		return new ModelAndView("redirect:/" + CLIENTE_URI + "{cliente.id}", "cliente.id" , cliente.getId());
 	}
 	
-	@GetMapping("alterar/{id}")
+	@GetMapping("/alterar/{id}")
 	public ModelAndView alterar(@PathVariable("id") Cliente cliente) {
 		return new ModelAndView("/clientes/form", "cliente", cliente);
 	}
@@ -71,7 +72,7 @@ public class ClienteController {
 		return modelAndView;
 	}
 	
-	@GetMapping
+	@GetMapping("lista")
 	public ModelAndView listar() {
 		List<Cliente> clientes = repository.findAll();
 		return new ModelAndView("clientes/lista", "clientes", clientes);
